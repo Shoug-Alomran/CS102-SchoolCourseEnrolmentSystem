@@ -53,7 +53,8 @@ nav:
       - Main Class: code-main.md
       - Helpers: code-helpers.md
       - Data Manager: code-data-manager.md
-  - Reports & Statistics: reports.md
+  - Reports & Statistics: reports-and-statistics.md
+  - PDF Documentation: CS102 PROJECT REPORT.pdf
 
 markdown_extensions:
   - admonition
