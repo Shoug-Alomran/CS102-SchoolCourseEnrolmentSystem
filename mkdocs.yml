@@ -68,7 +68,3 @@ markdown_extensions:
 
 plugins:
   - search
-
-extra_css:
-  - styles/extra.css
-  - styles/resume.css
