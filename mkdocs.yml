@@ -1,0 +1,73 @@
+site_name: Shoug's Digital Garden
+site_url: school-course-enrolment-system.Shoug-Tech.com
+
+theme:
+  name: material
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.prune
+    - navigation.instant
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+  palette:
+    - scheme: default
+      primary: purple
+      accent: deep purple
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - scheme: slate
+      primary: deep purple
+      accent: purple
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+  icon:
+    logo: material/leaf
+  font:
+    text: Inter
+    code: Fira Code
+
+nav:
+  - Home: index.md
+  - Project Structure:
+      - Overview: structure.md
+      - Helpers Class: helpers.md
+      - Data Manager: data-manager.md
+      - Main Application: main.md
+  - Core Classes:
+      - User: user.md
+      - Student: student.md
+      - Instructor: instructor.md
+      - Administrator: administrator.md
+      - Course: course.md
+      - Assessment: assessment.md
+  - Workflows:
+      - Student Workflow: student-workflow.md
+      - Instructor Workflow: instructor-workflow.md
+      - Admin Workflow: admin-workflow.md
+      - Exit & Exception Flow: exit-exception.md
+  - Code Reference:
+      - Main Class: code-main.md
+      - Helpers: code-helpers.md
+      - Data Manager: code-data-manager.md
+  - Reports & Statistics: reports.md
+
+markdown_extensions:
+  - admonition
+  - toc:
+      permalink: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.superfences
+  - pymdownx.inlinehilite
+
+plugins:
+  - search
+
+extra_css:
+  - styles/extra.css
+  - styles/resume.css
