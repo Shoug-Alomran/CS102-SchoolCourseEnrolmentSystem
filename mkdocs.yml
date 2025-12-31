@@ -32,11 +32,18 @@ theme:
 
 nav:
   - Home: index.md
+
   - Project Structure:
       - Overview: structure.md
+      - File Structure: file-structure.md
+      - Data Files: data-files.md
+      - Exceptions & Validation: exceptions-and-validation.md
+      - Menus: menus.md
+      - Notes: notes.md
       - Helpers Class: helpers.md
       - Data Manager: data-manager.md
       - Main Application: main.md
+
   - Core Classes:
       - User: user.md
       - Student: student.md
@@ -44,16 +51,21 @@ nav:
       - Administrator: administrator.md
       - Course: course.md
       - Assessment: assessment.md
+
   - Workflows:
       - Student Workflow: student-workflow.md
       - Instructor Workflow: instructor-workflow.md
       - Admin Workflow: admin-workflow.md
       - Exit & Exception Flow: exit-exception.md
+
   - Code Reference:
       - Main Class: code-main.md
       - Helpers: code-helpers.md
       - Data Manager: code-data-manager.md
+      - Per-Class Code Summary: code-per-class.md
+
   - Reports & Statistics: reports-and-statistics.md
+
   - PDF Documentation: CS102 PROJECT REPORT.pdf
 
 markdown_extensions:
