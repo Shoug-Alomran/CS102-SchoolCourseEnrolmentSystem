@@ -9,10 +9,10 @@ It summarizes the major components, their responsibilities, and how they interac
 
 The system is organized into four main layers:
 
-1. Core Entity Classes  
-2. Utility Classes  
-3. Data Management  
-4. Main Application Flow
+1. **Core Entity Classes**  
+2. **Utility Classes**  
+3. **Data Management**  
+4. **Main Application Flow**
 
 Each layer contributes to a modular, maintainable, and object‑oriented design.
 
@@ -42,14 +42,14 @@ Subclasses:
 - Instructor  
 - Administrator  
 
-The class enforces a contract through abstract methods:
+Abstract methods:
 
 - `login()`  
 - `logout()`
 
 ---
 
-## Student
+### Student
 
 Represents a student in the system.
 
@@ -63,7 +63,7 @@ Responsibilities:
 
 ---
 
-## Instructor
+### Instructor
 
 Represents an instructor in the system.
 
@@ -76,7 +76,7 @@ Responsibilities:
 
 ---
 
-## Administrator
+### Administrator
 
 Represents a system administrator.
 
@@ -90,7 +90,7 @@ Responsibilities:
 
 ---
 
-## Course
+### Course
 
 Represents a university course.
 
@@ -111,7 +111,7 @@ Includes validation logic and helper methods such as `isFull()`.
 
 ---
 
-## Assessment
+### Assessment
 
 Represents a single evaluation event (quiz, midterm, final, project).
 
@@ -123,7 +123,7 @@ Attributes:
 - score  
 - assessmentName  
 
-Methods support assigning grades, viewing grades, and calculating averages.
+Supports grade assignment, grade viewing, and average calculation.
 
 ---
 
@@ -153,7 +153,7 @@ This class centralizes repeated logic and improves maintainability.
 
 ### dataManager
 
-Handles all file‑based persistence.
+Handles all file‑based persistence for the system.
 
 Responsibilities:
 
@@ -165,37 +165,11 @@ Responsibilities:
   - Assessments  
 
 - CRUD operations for all entities  
-- Assigning instructors  
-- Enrolling and 3. Data Management Class
-
-### dataManager
-
-Handles all file‑based persistence.
-
-Responsibilities:
-
-- Load and save data for:
-  - Students  
-  - Instructors  
-  - Administrators  
-  - Courses  
-  - Assessments  
-
-- CRUD operations for all entities  
-- Assigning instructors  
+- Assigning instructors to courses  
 - Enrolling and dropping students  
-- Generating reports dropping students  
-- Generating reports  
+- Generating reports and statistics  
 
-This class ensures  
-
-This class ensures that system data persists across that system data persists across program sessions program sessions.
-
----
-
-## 4. Main Application Class
-
-### SchoolCourse.
+This class ensures that all system data persists across program sessions.
 
 ---
 
@@ -205,60 +179,29 @@ This class ensures that system data persists across that system data persists ac
 
 The entry point of the application.
 
-ResponsibilitiesEnrolmentSystem
-
-The entry point of the application.
-
 Responsibilities:
 
 - Initialize the data manager  
-:
-
-- Initialize the data manager  
 - Load all saved data  
-- Create- Load all saved data  
 - Create a default administrator  
-- Provide the main role selection a default administrator  
 - Provide the main role selection loop  
-- Direct loop  
 - Direct users to:
   - Student workflow  
   - Instructor workflow  
-  - Administrator users to:
-  - Student workflow  
-  - Instructor workflow  
   - Administrator workflow  
+- Save all data before exiting  
 
-- Save data before exiting workflow  
-
-- Save data before exiting  
-
-This class coordinates  
-
-This class coordinates the entire system and manages user the entire system and manages user interaction.
-
----
-
- interaction.
+This class coordinates the entire system and manages user interaction.
 
 ---
 
 ## Summary
 
-The project is structured to## Summary
+The project is structured to separate concerns clearly:
 
-The project is structured to separate concerns separate concerns clearly:
+- **Entity classes** model the system’s data  
+- **Helpers** provide reusable logic  
+- **dataManager** handles persistence  
+- **The main class** manages application flow  
 
-- Entity classes model the clearly:
-
-- Entity classes model the system’s data  
-- Helpers provide system’s data  
-- Helpers provide reusable logic  
-- dataManager handles persistence  
-- reusable logic  
-- dataManager handles persistence  
-- The main class manages application flow The main class manages application flow  
-
-This modular design supports  
-
-This modular design supports readability, maintainability, and scalability readability, maintainability, and scalability.
+This modular design supports readability, maintainability, and scalability.
