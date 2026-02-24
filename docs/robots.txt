@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://school-course-enrolment-system.shoug-tech.com/sitemap.xml
