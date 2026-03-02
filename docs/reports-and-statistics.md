@@ -1,5 +1,24 @@
 # Reports and Statistics
 
+<section class="bp-hero">
+  <h2>Reporting Center</h2>
+  <p class="bp-subtitle">Metrics, course popularity snapshots, and enrollment monitoring for administrators.</p>
+  <div class="bp-hero-grid">
+    <a class="bp-card" href="admin-workflow/">
+      <strong>Admin Workflow</strong>
+      <span>Entry point for statistics and report actions.</span>
+    </a>
+    <a class="bp-card" href="data-manager/">
+      <strong>Data Sources</strong>
+      <span>Underlying structures used for report generation.</span>
+    </a>
+    <a class="bp-card" href="code-data-manager/">
+      <strong>Code Reference</strong>
+      <span>Implementation-level details behind report logic.</span>
+    </a>
+  </div>
+</section>
+
 The School Enrollment System includes built‑in reporting and statistical features that help administrators understand system activity, course popularity, and overall enrollment distribution.  
 These features are implemented primarily through the `Helpers` class and rely on data stored in the `Course` and `Assessment` lists.
 

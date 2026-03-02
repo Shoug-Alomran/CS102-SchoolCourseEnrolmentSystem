@@ -1,0 +1,48 @@
+<footer class="bp-footer">
+  <div class="md-grid">
+    <div class="bp-footer__panel">
+      <section class="bp-footer__brand">
+        <p class="bp-footer__eyebrow">{{ config.site_name }}</p>
+        <h3 class="bp-footer__title">School Course Enrolment System</h3>
+        <p class="bp-footer__text">Structured technical documentation for architecture, workflows, and implementation details.</p>
+        <form class="bp-footer__subscribe" action="https://shoug-tech.com/" method="get" target="_blank">
+          <label class="bp-visually-hidden" for="bp-email">Email address</label>
+          <input id="bp-email" name="email" type="email" placeholder="Enter your email" required />
+          <button type="submit">Subscribe</button>
+        </form>
+        <p class="bp-footer__hint">CS102 Programming II · Prince Sultan University</p>
+      </section>
+      <section>
+        <p class="bp-footer__heading">Documentation</p>
+        <div class="bp-footer__list">
+          <a href="{{ '' | url }}">Home</a>
+          <a href="{{ 'structure/' | url }}">Project Structure</a>
+          <a href="{{ 'student-workflow/' | url }}">Workflows</a>
+          <a href="{{ 'code-main/' | url }}">Code Reference</a>
+          <a href="{{ 'reports-and-statistics/' | url }}">Reports &amp; Statistics</a>
+        </div>
+      </section>
+      <section>
+        <p class="bp-footer__heading">Policies</p>
+        <div class="bp-footer__list">
+          <a href="{{ 'policys/privacy-notice/' | url }}">Privacy Notice</a>
+          <a href="{{ 'policys/academic-disclaimer/' | url }}">Academic Disclaimer</a>
+          <a href="{{ 'policys/copyright/' | url }}">Copyright</a>
+        </div>
+      </section>
+      <section>
+        <p class="bp-footer__heading">Project Links</p>
+        <div class="bp-footer__list">
+          <a href="https://shoug-tech.com/" target="_blank" rel="noopener">Main Website</a>
+          <a href="{{ config.site_url | default('#', true) }}">Live Documentation</a>
+          <a href="mailto:2234103192@psu.edu.sa">2234103192@psu.edu.sa</a>
+          <a href="{{ 'CS102 PROJECT REPORT.pdf' | url }}">Project PDF Report</a>
+          <a href="https://blueprint.shoug-tech.com/" target="_blank" rel="noopener">Made by Blueprint</a>
+        </div>
+      </section>
+    </div>
+    <div class="bp-footer__bar">
+      <p>© 2026 Shoug Fawaz Alomran · All rights reserved</p>
+    </div>
+  </div>
+</footer>

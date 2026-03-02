@@ -1,5 +1,24 @@
 # Student Workflow
 
+<section class="bp-hero">
+  <h2>Student Experience</h2>
+  <p class="bp-subtitle">A complete flow from discovering courses to managing credit load and grades.</p>
+  <div class="bp-hero-grid">
+    <a class="bp-card" href="course/">
+      <strong>Course Model</strong>
+      <span>Understand capacity, status, and scheduling rules.</span>
+    </a>
+    <a class="bp-card" href="assessment/">
+      <strong>Assessments</strong>
+      <span>See how quiz, midterm, and final grades are stored.</span>
+    </a>
+    <a class="bp-card" href="helpers/">
+      <strong>Input Helpers</strong>
+      <span>Validation and menu handlers behind each action.</span>
+    </a>
+  </div>
+</section>
+
 The student workflow defines all actions available to a student after successfully logging into the School Enrollment System.  
 This workflow is menu‑driven and allows students to manage their courses, view grades, and update personal information.
 

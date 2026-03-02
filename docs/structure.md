@@ -1,5 +1,24 @@
 # Project Structure
 
+<section class="bp-hero">
+  <h2>System Blueprint</h2>
+  <p class="bp-subtitle">A layered view of entities, utilities, data management, and application flow.</p>
+  <div class="bp-hero-grid">
+    <a class="bp-card" href="main/">
+      <strong>Main Controller</strong>
+      <span>Understand the runtime loop and orchestration.</span>
+    </a>
+    <a class="bp-card" href="data-manager/">
+      <strong>Data Manager</strong>
+      <span>See how file persistence and CRUD are handled.</span>
+    </a>
+    <a class="bp-card" href="user/">
+      <strong>Core Classes</strong>
+      <span>Navigate user, course, and assessment entities.</span>
+    </a>
+  </div>
+</section>
+
 This page provides a high‑level overview of the architecture of the School Enrollment System.  
 It summarizes the major components, their responsibilities, and how they interact within the application.
 

@@ -1,5 +1,24 @@
 # Instructor Workflow
 
+<section class="bp-hero">
+  <h2>Instructor Experience</h2>
+  <p class="bp-subtitle">Operational flow for roster visibility, assessment grading, and course maintenance.</p>
+  <div class="bp-hero-grid">
+    <a class="bp-card" href="course/">
+      <strong>Managed Courses</strong>
+      <span>Course attributes instructors can update safely.</span>
+    </a>
+    <a class="bp-card" href="assessment/">
+      <strong>Grading System</strong>
+      <span>Assessment creation and update behavior.</span>
+    </a>
+    <a class="bp-card" href="exceptions-and-validation/">
+      <strong>Validation Rules</strong>
+      <span>Constraints that protect grading integrity.</span>
+    </a>
+  </div>
+</section>
+
 The instructor workflow defines all actions available to an instructor after successfully logging into the School Enrollment System.  
 This workflow allows instructors to manage their courses, grade students, and update their personal information.
 

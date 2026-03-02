@@ -25,7 +25,6 @@ Each component plays a specific role in the system’s architecture.
 A typical layout for the project is as follows:
 
 SchoolCourseEnrolmentSystem/
-│
 ├── src/
 │   ├── User.java
 │   ├── Student.java
@@ -33,41 +32,38 @@ SchoolCourseEnrolmentSystem/
 │   ├── Administrator.java
 │   ├── Course.java
 │   ├── Assessment.java
-│   │
 │   ├── Helpers.java
 │   ├── DataManager.java
-│   │
 │   └── SchoolCourseEnrolmentSystem.java    ← Main entry point
-│
 ├── data/
 │   ├── students.txt
 │   ├── instructors.txt
 │   ├── administrators.txt
 │   ├── courses.txt
 │   └── assessments.txt
-│
 └── docs/
-├── index.md
-├── structure.md
-├── file-structure.md
-├── data-files.md
-├── helpers.md
-├── data-manager.md
-├── main.md
-├── student.md
-├── instructor.md
-├── administrator.md
-├── course.md
-├── assessment.md
-├── student-workflow.md
-├── instructor-workflow.md
-├── admin-workflow.md
-├── exit-exception.md
-├── code-main.md
-├── code-helpers.md
-├── code-data-manager.md
-├── reports-and-statistics.md
-└── CS102 PROJECT REPORT.pdf
+    ├── index.md
+    ├── structure.md
+    ├── file-structure.md
+    ├── data-files.md
+    ├── helpers.md
+    ├── data-manager.md
+    ├── main.md
+    ├── student.md
+    ├── instructor.md
+    ├── administrator.md
+    ├── course.md
+    ├── assessment.md
+    ├── student-workflow.md
+    ├── instructor-workflow.md
+    ├── admin-workflow.md
+    ├── exit-exception.md
+    ├── code-main.md
+    ├── code-helpers.md
+    ├── code-data-manager.md
+    ├── reports-and-statistics.md
+    └── CS102 PROJECT REPORT.pdf
+
 
 ---
 

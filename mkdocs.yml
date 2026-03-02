@@ -1,10 +1,13 @@
-site_name: Shoug's Digital Garden
+site_name: School Course Enrolment System Docs
 site_url: https://school-course-enrolment-system.Shoug-Tech.com
+site_description: School Course Enrolment System technical documentation
 
 theme:
   name: material
+  custom_dir: overrides
   features:
     - navigation.tabs
+    - navigation.tabs.sticky
     - navigation.sections
     - navigation.prune
     - navigation.instant
@@ -13,22 +16,19 @@ theme:
     - content.code.copy
   palette:
     - scheme: default
-      primary: purple
-      accent: deep purple
-      toggle:
-        icon: material/weather-night
-        name: Switch to dark mode
-    - scheme: slate
-      primary: deep purple
-      accent: purple
-      toggle:
-        icon: material/weather-sunny
-        name: Switch to light mode
+      primary: blue
+      accent: teal
   icon:
-    logo: material/leaf
+    logo: material/school
   font:
-    text: Inter
-    code: Fira Code
+    text: Space Grotesk
+    code: JetBrains Mono
+
+extra:
+  generator: false
+
+extra_css:
+  - stylesheets/extra.css
 
 nav:
   - Home: index.md

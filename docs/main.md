@@ -1,5 +1,24 @@
 # Main Application Class
 
+<section class="bp-hero">
+  <h2>Application Runtime Core</h2>
+  <p class="bp-subtitle">The command-loop engine that initializes data, authenticates users, and routes role workflows.</p>
+  <div class="bp-hero-grid">
+    <a class="bp-card" href="student-workflow/">
+      <strong>Student Flow</strong>
+      <span>Enrollment, profile updates, and grades.</span>
+    </a>
+    <a class="bp-card" href="instructor-workflow/">
+      <strong>Instructor Flow</strong>
+      <span>Course management and grading operations.</span>
+    </a>
+    <a class="bp-card" href="admin-workflow/">
+      <strong>Admin Flow</strong>
+      <span>User lifecycle, course control, and reporting.</span>
+    </a>
+  </div>
+</section>
+
 The `SchoolCourseEnrolmentSystem` class serves as the main entry point of the School Enrollment System.  
 It coordinates authentication, role selection, workflow execution, and data persistence.
 

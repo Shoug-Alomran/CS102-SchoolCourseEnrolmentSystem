@@ -1,5 +1,24 @@
 # Administrator Workflow
 
+<section class="bp-hero">
+  <h2>Administrator Experience</h2>
+  <p class="bp-subtitle">System-wide control over user lifecycle, course governance, and reporting.</p>
+  <div class="bp-hero-grid">
+    <a class="bp-card" href="administrator/">
+      <strong>Admin Role</strong>
+      <span>Capabilities and responsibilities overview.</span>
+    </a>
+    <a class="bp-card" href="reports-and-statistics/">
+      <strong>Statistics & Reports</strong>
+      <span>Track enrollment trends and generate outputs.</span>
+    </a>
+    <a class="bp-card" href="data-manager/">
+      <strong>Data Operations</strong>
+      <span>How updates are persisted and synchronized.</span>
+    </a>
+  </div>
+</section>
+
 The administrator workflow defines all actions available to an administrator after successfully logging into the School Enrollment System.  
 Administrators have the highest level of access and can manage users, courses, and system-wide academic data.
 

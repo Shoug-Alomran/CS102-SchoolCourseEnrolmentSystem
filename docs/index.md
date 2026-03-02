@@ -1,8 +1,29 @@
 # School Enrollment System
 
-CS102 Project — Documentation Website
+<section class="bp-hero">
+  <h2>Project Documentation Hub</h2>
+  <p class="bp-subtitle">Architecture, workflows, and source-level references for the CS102 School Course Enrolment System.</p>
+  <div class="bp-hero-grid">
+    <a class="bp-card" href="structure/">
+      <strong>Architecture</strong>
+      <span>Explore layers, entities, and system design.</span>
+    </a>
+    <a class="bp-card" href="student-workflow/">
+      <strong>Workflows</strong>
+      <span>Follow student, instructor, and admin journeys.</span>
+    </a>
+    <a class="bp-card" href="code-main/">
+      <strong>Code Reference</strong>
+      <span>Jump directly to implementation summaries.</span>
+    </a>
+    <a class="bp-card" href="reports-and-statistics/">
+      <strong>Reports</strong>
+      <span>Review enrollment statistics and generated reports.</span>
+    </a>
+  </div>
+</section>
 
----
+CS102 Project Documentation Website
 
 ## Abstract
 
