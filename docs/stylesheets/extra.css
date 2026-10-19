@@ -571,6 +571,18 @@ body {
   .md-content {
     max-width: 50rem;
   }
+
+  /* No "On this page" entries (e.g. source listings) or rail hidden (home):
+     drop the empty rail column and let the content use the full width */
+  .md-main__inner:has(.md-sidebar--secondary[hidden]) .md-content,
+  .md-main__inner:not(:has(.md-sidebar--secondary .md-nav__list)) .md-content {
+    max-width: none;
+  }
+
+  .md-main__inner:not(:has(.md-sidebar--secondary .md-nav__list))
+    .md-sidebar--secondary {
+    display: none;
+  }
 }
 
 @media screen and (max-width: 76.234375em) {

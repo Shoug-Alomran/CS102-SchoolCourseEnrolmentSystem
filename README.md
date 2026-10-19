@@ -1,6 +1,6 @@
 # SchoolCourseEnrolmentSystem
 
-![School Course Enrolment System - CS102 Java project](docs/assets/images/banner.png)
+![School Course Enrolment System - CS102 Java project](web/static/img/og.png)
 
 The **SchoolCourseEnrolmentSystem** is a Java-based console application designed to simulate a simplified course management system within a university setting.  
 It enables key academic roles — Students, Instructors, and Administrators — to interact with a shared course database through role-specific features.
@@ -91,3 +91,23 @@ It enables key academic roles — Students, Instructors, and Administrators — 
 - Implement unit testing
 - Use a database (e.g., SQLite) for persistence
 - Export reports in CSV or PDF format
+
+---
+
+## Documentation website
+
+The site at [school-course-enrolment-system.shoug-tech.com](https://school-course-enrolment-system.shoug-tech.com/) documents every class, each role's menu and the data files, and includes an in-browser console that replays the program against sample data.
+
+It is a static site built by a single Python script with no dependencies:
+
+```sh
+python3 web/build.py          # writes the site to _site/
+python3 web/build.py --serve  # builds, then serves it on http://localhost:8000
+```
+
+- `web/java/` holds the Java listings from the project report. Class pages, signatures and line numbers are generated from them.
+- `web/content/` holds the written content: class notes, role sessions, data files, known issues and policies.
+- `web/static/` holds the CSS, JavaScript (including the console simulator) and images.
+
+Pushing to `main` builds and deploys the site through GitHub Actions (`.github/workflows/deploy-mkdocs.yml`).
+

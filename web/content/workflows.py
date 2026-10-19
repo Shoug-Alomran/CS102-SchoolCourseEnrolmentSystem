@@ -1,0 +1,435 @@
+"""Role sessions: one entry per role, one option per menu item.
+
+Menu labels, prompts and messages are copied from the report's listings
+(including their original spelling). Step kinds:
+  in    the user types something
+  do    the program works on the lists
+  check a rule that can stop the flow
+  out   something is printed
+  save  a file is written immediately
+Each option links to the method that does the work as (class slug, method).
+"""
+
+STUDENT_SAMPLE = "2200000001 / Student1234"
+INSTRUCTOR_SAMPLE = "4000000001 / Teacher1234"
+ADMIN_SAMPLE = "1122334455 / Default12345"
+
+WORKFLOWS = [
+    {
+        "slug": "student-workflow",
+        "role": "student",
+        "title": "Student session",
+        "name": "Student",
+        "cls": "student",
+        "icon": "S",
+        "lede": "Type student at the role prompt, log in, and an 8-option menu loops until you log out. Most changes stay in memory until the program exits.",
+        "menu_method": "showStudentMenu",
+        "menu_header": "---------Student Menu---------",
+        "sample": STUDENT_SAMPLE,
+        "options": [
+            {
+                "n": 1, "label": "View avaliable courses.",
+                "call": "loggedInStudent.viewAvailableCourses(getAllCourses())",
+                "target": ("student", "viewAvailableCourses"), "save": None,
+                "summary": "List every course that is open and has space.",
+                "steps": [
+                    ("out", "Available courses are:"),
+                    ("do", "Loop over every course"),
+                    ("check", "Not full and status is Open"),
+                    ("out", "Name, code, schedule, instructor and capacity"),
+                ],
+                "outcomes": [
+                    ("A course qualifies", "- (Course name: Programming II) (Course code: CS102) (Course schedule: Sun/Tue 10:00) (Course instructor: -ID: 4000000001 Name: Lina Haddad) (Course capacity: 30)."),
+                    ("Nothing qualifies", "No courses are avaliable."),
+                ],
+            },
+            {
+                "n": 2, "label": "Enroll in course.",
+                "call": "Helpers.enroll_In_Course_Student(getAllCourses(), loggedInStudent)",
+                "target": ("student", "enroll_In_Course"), "save": None,
+                "summary": "Pick from the courses you can join; four rules decide whether it works.",
+                "steps": [
+                    ("do", "Filter: not full, Open, not already enrolled"),
+                    ("out", "Numbered list of those courses"),
+                    ("in", "Enter the number of the course you would like to enroll in:"),
+                    ("check", "Already enrolled? Full? Closed? Over the credit limit?"),
+                    ("do", "Add course to student and student to course"),
+                ],
+                "outcomes": [
+                    ("Enrolled", "Sara Khalid enrolled successfully"),
+                    ("Already enrolled", "You are already enrolled in (Programming II) (CS102)."),
+                    ("Course is full", "Cannot enroll in Physics I - course is full."),
+                    ("Course is closed", "Enrollment status is closed."),
+                    ("Too many hours", "Cannot enroll in Data Structures - credit limit exceeded."),
+                    ("Nothing to join", "No available courses to enroll in."),
+                    ("Bad number", "Invalid selection: 9"),
+                ],
+            },
+            {
+                "n": 3, "label": "View enrolled courses.",
+                "call": "loggedInStudent.viewEnrolledCourses()",
+                "target": ("student", "viewEnrolledCourses"), "save": None,
+                "summary": "Print the courses on your timetable.",
+                "steps": [
+                    ("check", "Any enrolled courses?"),
+                    ("out", "Name, code, credit hours and schedule for each"),
+                ],
+                "outcomes": [
+                    ("Has courses", "1- (Programming II) (CS102) (3). The schedule is: Sun/Tue 10:00."),
+                    ("No courses", "Sara Khalid is not enrolled in any courses."),
+                ],
+            },
+            {
+                "n": 4, "label": "View credit limit.",
+                "call": "loggedInStudent.viewCreditLimit(getAllStudents())",
+                "target": ("student", "viewCreditLimit"), "save": None,
+                "summary": "Show the credit limit and the hours left.",
+                "steps": [
+                    ("do", "Take the first student in the list (see Known issues)"),
+                    ("out", "Credit limit, then limit minus enrolled hours"),
+                ],
+                "outcomes": [
+                    ("Always", "Your credit limit is: 15\nRemaining credit limit is: 12 hours."),
+                ],
+            },
+            {
+                "n": 5, "label": "Drop course.",
+                "call": "Helpers.dropCourse(getAllCourses(), loggedInStudent)",
+                "target": ("student", "dropCourse"), "save": None,
+                "summary": "Drop by course code while enrolment is still open.",
+                "steps": [
+                    ("in", "Enter course code of the course you would like to drop:"),
+                    ("check", "Code exists (case-insensitive)"),
+                    ("check", "You are enrolled, and the course is Open"),
+                    ("do", "Remove the course from your list"),
+                ],
+                "outcomes": [
+                    ("Dropped", "Sara Khalid has successfully dropped (Programming II) (CS102)."),
+                    ("Not enrolled", "Sara Khalid is not enrolled in (Technical Writing) (ENG101)."),
+                    ("Course closed", "Drop period is closed."),
+                    ("Unknown code", "No course found with the codeXYZ1'."),
+                ],
+            },
+            {
+                "n": 6, "label": "View grades.",
+                "call": "loggedInStudent.viewGrades(getAllAssessments())",
+                "target": ("student", "viewGrades"), "save": None,
+                "summary": "A three-way sub-menu over your Assessment records.",
+                "steps": [
+                    ("out", "1. View a specific exam score. 2. View all grades in a course. 3. View total average in a course."),
+                    ("in", "Option, then a course number (and an exam type for option 1)"),
+                    ("do", "Filter grades by your ID and the course code"),
+                ],
+                "outcomes": [
+                    ("One score", "Your Quiz_1 score: 88.0"),
+                    ("All grades", "Quiz_1: 88.0\nMidterm_1: 91.5"),
+                    ("Average", "Your total average grade in CS102 is: 89.75"),
+                    ("No grades", "No grades found for this course."),
+                    ("No courses", "You are not enrolled in any courses."),
+                ],
+            },
+            {
+                "n": 7, "label": "Update personal information.",
+                "call": "Helpers.updateStudentProfile(loggedInStudent); saveStudents()",
+                "target": ("helpers", "updateStudentProfile"), "save": "students.txt",
+                "summary": "Yes/No for password, email, phone and address, each validated.",
+                "steps": [
+                    ("in", "Do you want to change your password? 1.Yes 2.No"),
+                    ("check", "Each new value must pass its validator"),
+                    ("in", "Same for email, phone number and address"),
+                    ("save", "students.txt is rewritten straight away"),
+                ],
+                "outcomes": [
+                    ("Saved", "Student Sara Khalid's information updated."),
+                    ("Rejected value", "Invalid email. Please try again."),
+                    ("Kept value", "password remains unchanged."),
+                ],
+            },
+            {
+                "n": 8, "label": "Logout.",
+                "call": "loggedInStudent.logout(loggedInStudent)",
+                "target": ("student", "logout"), "save": None,
+                "summary": "Leave the menu and return to the role prompt.",
+                "steps": [("do", "logout() returns a message, but main() does not print it")],
+                "outcomes": [("Back to", "Enter your role from the current options: (Student/Instructor/Admin) or exit to finish.")],
+            },
+        ],
+    },
+    {
+        "slug": "instructor-workflow",
+        "role": "instructor",
+        "title": "Instructor session",
+        "name": "Instructor",
+        "cls": "instructor",
+        "icon": "I",
+        "lede": "Type instructor at the role prompt. Five options cover rosters, grading and course details. Course and profile edits are saved immediately; grades wait until exit.",
+        "menu_method": "showInstructorMenu",
+        "menu_header": "---------Instructor Menu---------",
+        "sample": INSTRUCTOR_SAMPLE,
+        "options": [
+            {
+                "n": 1, "label": "View enrolled students.",
+                "call": "loggedInInstructor.viewEnrolledStudents(loggedInInstructor, getAllCourses())",
+                "target": ("instructor", "viewEnrolledStudents"), "save": None,
+                "summary": "Rosters for every course you are assigned to.",
+                "steps": [
+                    ("do", "Loop over every course"),
+                    ("check", "Course instructor ID matches yours"),
+                    ("out", "Course header, then each student's name, ID, email and phone"),
+                ],
+                "outcomes": [
+                    ("Roster", "(Course: Programming II) (Code: CS102)\n-Student: Sara Khalid, ID: 2200000001, Email: sara.k@uni.example, Phone number: 0500000101"),
+                    ("Empty roster", "No students enrolled in this course."),
+                    ("No courses", "Instructor Lina Haddad is not assigned to any courses."),
+                ],
+            },
+            {
+                "n": 2, "label": "Grade assignments.",
+                "call": "loggedInInstructor.gradeStudent(getAllAssessments(), getAllCourses())",
+                "target": ("instructor", "gradeStudent"), "save": None,
+                "summary": "Course → student → exam type → score, then update or record.",
+                "steps": [
+                    ("out", "Courses you're assigned to:"),
+                    ("in", "Select a course to grade:"),
+                    ("in", "Select a student to grade:"),
+                    ("in", "Choice: (Quiz_1 … Project)"),
+                    ("in", "Enter score (0-100):"),
+                    ("check", "Score between 0 and 100"),
+                    ("do", "Update the matching Assessment or add a new one"),
+                ],
+                "outcomes": [
+                    ("New grade", "Grade recorded successfully."),
+                    ("Existing grade", "Grade updated successfully."),
+                    ("Out of range", "Score must be between 0 and 100."),
+                    ("Empty course", "No students enrolled in this course."),
+                    ("No courses", "You're not assigned to any courses."),
+                ],
+            },
+            {
+                "n": 3, "label": "Update course information.",
+                "call": "Helpers.updateCourseInfo(loggedInInstructor, getAllCourses()); saveCourses()",
+                "target": ("instructor", "updateCourseInfo"), "save": "courses.txt",
+                "summary": "New schedule and description for a course you teach.",
+                "steps": [
+                    ("in", "Enter the course code of the course you would like to update:"),
+                    ("in", "Enter new schedule:"),
+                    ("in", "Enter new description:"),
+                    ("check", "Course exists and you are its instructor"),
+                    ("save", "courses.txt is rewritten straight away"),
+                ],
+                "outcomes": [
+                    ("Updated", "Instructor Lina Haddad's course information updated for Programming II"),
+                    ("Not yours", "Omar Faris with the ID number: 4000000002 is not assigned to Discrete Mathematics."),
+                    ("Unassigned", "No instructor assigned to Physics I."),
+                    ("Unknown code", "Course with code XYZ1 not found."),
+                ],
+            },
+            {
+                "n": 4, "label": "Update personal information.",
+                "call": "Helpers.updateInstructorProfile(loggedInInstructor); saveInstructors()",
+                "target": ("helpers", "updateInstructorProfile"), "save": "instructors.txt",
+                "summary": "Yes/No for password, email, phone and address, each validated.",
+                "steps": [
+                    ("in", "Do you want to change your password? 1.Yes 2.No"),
+                    ("check", "Each new value must pass its validator"),
+                    ("save", "instructors.txt is rewritten straight away"),
+                ],
+                "outcomes": [
+                    ("Saved (printed twice)", "Instructor Lina Haddad's information updated."),
+                ],
+            },
+            {
+                "n": 5, "label": "Logout.",
+                "call": "loggedInInstructor.logout(loggedInInstructor)",
+                "target": ("instructor", "logout"), "save": None,
+                "summary": "Return to the role prompt.",
+                "steps": [("do", "logout() returns a message, but main() does not print it")],
+                "outcomes": [("Back to", "Enter your role from the current options: (Student/Instructor/Admin) or exit to finish.")],
+            },
+        ],
+    },
+    {
+        "slug": "admin-workflow",
+        "role": "admin",
+        "title": "Admin session",
+        "name": "Administrator",
+        "cls": "administrator",
+        "icon": "A",
+        "lede": "Type admin at the role prompt. Fourteen options manage accounts, courses and reports. Only the two profile updates save immediately; the rest is written on exit.",
+        "menu_method": "showAdminMenu",
+        "menu_header": "---------Administrator Menu---------",
+        "sample": ADMIN_SAMPLE,
+        "options": [
+            {
+                "n": 1, "label": "Add Students.",
+                "call": "Helpers.addStudent(loggedInAdministrator, getAllStudents())",
+                "target": ("helpers", "addStudent"), "save": None,
+                "summary": "Create a student with a generated 10-digit ID.",
+                "steps": [
+                    ("in", "Enter student name: (more than 3 characters)"),
+                    ("do", "GenerateRandomID() until the ID is unused"),
+                    ("in", "Password, email, phone number, address, each validated"),
+                    ("in", "Enter credit limit:"),
+                    ("do", "Administrator.addStudent appends it"),
+                ],
+                "outcomes": [("Added", "Student added: Huda Nasser with the ID: 8301945526")],
+            },
+            {
+                "n": 2, "label": "Remove Students.",
+                "call": "Helpers.removeStudent(loggedInAdministrator, getAllStudents())",
+                "target": ("administrator", "removeStudent"), "save": None,
+                "summary": "Remove by ID using an Iterator.",
+                "steps": [
+                    ("in", "Enter the ID of the student to remove:"),
+                    ("do", "Iterator walks the list and removes the match"),
+                    ("out", "Then always prints “Invalid option.” (see Known issues)"),
+                ],
+                "outcomes": [
+                    ("Removed", "Noura Saleh with the ID: 2200000002 has been successfully removed"),
+                    ("Unknown ID", "2299999999 is not found."),
+                ],
+            },
+            {
+                "n": 3, "label": "View student list.",
+                "call": "loggedInAdministrator.viewStudentList(getAllStudents())",
+                "target": ("administrator", "viewStudentList"), "save": None,
+                "summary": "One line per student.",
+                "steps": [("out", "toString() of every student")],
+                "outcomes": [("Students", "-ID: 2200000001 Name: Sara Khalid"), ("Empty", "No students are on record.")],
+            },
+            {
+                "n": 4, "label": "Add Instructors.",
+                "call": "Helpers.addInstructor(loggedInAdministrator, getAllInstructors())",
+                "target": ("helpers", "addInstructor"), "save": None,
+                "summary": "Like adding a student, without a credit limit.",
+                "steps": [
+                    ("in", "Enter instructor name:"),
+                    ("do", "Generate a unique random ID"),
+                    ("in", "Password, email, phone number, address, each validated"),
+                ],
+                "outcomes": [("Added", "Instructor added: Reem Aziz with the ID: 5172039486")],
+            },
+            {
+                "n": 5, "label": "Remove Instructors.",
+                "call": "Helpers.removeInstructor(loggedInAdministrator, getAllInstructors())",
+                "target": ("administrator", "removeInstructor"), "save": None,
+                "summary": "Remove by ID using an Iterator.",
+                "steps": [("in", "Enter the ID of the instructor to remove:"), ("do", "Iterator removes the match")],
+                "outcomes": [
+                    ("Removed", "Omar Faris with the ID: 4000000002 removed successfully."),
+                    ("Unknown ID", "Instructor with the ID: 4999999999 not found."),
+                ],
+            },
+            {
+                "n": 6, "label": "View instructor list.",
+                "call": "loggedInAdministrator.viewInstructorList(getAllInstructors())",
+                "target": ("administrator", "viewInstructorList"), "save": None,
+                "summary": "One line per instructor.",
+                "steps": [("out", "toString() of every instructor")],
+                "outcomes": [("Instructors", "-ID: 4000000001 Name: Lina Haddad"), ("Empty", "No instructors are on record.")],
+            },
+            {
+                "n": 7, "label": "Add Course.",
+                "call": "Helpers.addCourse(loggedInAdministrator, getAllCourses(), getAllInstructors())",
+                "target": ("helpers", "addCourse"), "save": None,
+                "summary": "Name, code, capacity, hours, optional instructor, then Open or Closed.",
+                "steps": [
+                    ("in", "Enter course name: / Enter course code:"),
+                    ("in", "Enter course capacity: / Enter course credit hours:"),
+                    ("in", "1. Assign now. 2. Assign later."),
+                    ("in", "Enter course status: 1. Open 2.Closed"),
+                    ("do", "Administrator.addCourse appends it"),
+                ],
+                "outcomes": [
+                    ("Added", "Course added: (Operating Systems) (CS330) succesfully."),
+                    ("Assigned now", "Instructor Lina Haddad is assigned to Operating Systems"),
+                    ("Assign later", "To be assigned."),
+                    ("No instructors", "No instructors available. Please add an instructor before creating a course."),
+                ],
+            },
+            {
+                "n": 8, "label": "Close Course.",
+                "call": "Helpers.closeCourse(loggedInAdministrator, getAllCourses())",
+                "target": ("administrator", "closeCourse"), "save": None,
+                "summary": "Find by exact name and code; only a full course is closed.",
+                "steps": [
+                    ("in", "Enter course name: / Enter course code:"),
+                    ("check", "Full → close it. Already closed → say so."),
+                ],
+                "outcomes": [
+                    ("Full", "Physics I is at full capacity."),
+                    ("Already closed", "Technical Writing enrollment status is closed."),
+                    ("Not found", "Course not found."),
+                    ("Open, not full", "(prints nothing, stays open)"),
+                ],
+            },
+            {
+                "n": 9, "label": "Update Student Info.",
+                "call": "Helpers.adminUpdateStudentProfile(...); saveStudents()",
+                "target": ("helpers", "adminUpdateStudentProfile"), "save": "students.txt",
+                "summary": "Find by name and ID, then update fields, role and credit limit.",
+                "steps": [
+                    ("in", "Student's name: / Student ID:"),
+                    ("in", "Yes/No for name, password, email, phone, address"),
+                    ("in", "Do you want to change the role? / credit limit?"),
+                    ("save", "students.txt is rewritten straight away"),
+                ],
+                "outcomes": [("Updated", "Student Sara Khalid's profile updated successfully.")],
+            },
+            {
+                "n": 10, "label": "Update Instructor Info.",
+                "call": "Helpers.adminUpdateInstructorProfile(...); saveInstructors()",
+                "target": ("helpers", "adminUpdateInstructorProfile"), "save": "instructors.txt",
+                "summary": "Find by name and ID, then update fields and role.",
+                "steps": [
+                    ("in", "Enter instructor name: / Enter instructor ID:"),
+                    ("in", "Yes/No for each field, then the role"),
+                    ("save", "instructors.txt is rewritten straight away"),
+                ],
+                "outcomes": [("Updated", "Instructor Lina Haddad's profile updated successfully.")],
+            },
+            {
+                "n": 11, "label": "Assign Instructor to Course.",
+                "call": "Helpers.assignInstructor(loggedInAdministrator, getAllCourses(), getAllInstructors())",
+                "target": ("administrator", "assignInstructor"), "save": None,
+                "summary": "Pick a course by number, then an instructor by ID.",
+                "steps": [
+                    ("out", "---------Available Courses---------"),
+                    ("in", "Enter the number of the course to assign the instructor to:"),
+                    ("in", "Enter the ID of the instructor to assign:"),
+                    ("check", "Course has no instructor yet"),
+                ],
+                "outcomes": [
+                    ("Assigned", "Instructor Omar Faris is assigned to Physics I"),
+                    ("Same instructor", "Instructor Lina Haddad is already assigned to Programming II"),
+                    ("Taken", "Course already has a different instructor assigned."),
+                    ("Unknown ID", "Instructor with ID 4999999999 not found."),
+                ],
+            },
+            {
+                "n": 12, "label": "View Enrollment Statistics.",
+                "call": "dataManagerInstance.viewEnrollmentStatistics()",
+                "target": ("data-manager", "viewEnrollmentStatistics"), "save": None,
+                "summary": "Per-course counts, the total, and whether anything is open.",
+                "steps": [("do", "Count each course's roster and add them up"), ("out", "One line per course, then two summary lines")],
+                "outcomes": [("Report", "See Reports & statistics for the full output")],
+            },
+            {
+                "n": 13, "label": "Generate Reports.",
+                "call": "dataManagerInstance.generateReports()",
+                "target": ("data-manager", "generateReports"), "save": None,
+                "summary": "The single most popular course.",
+                "steps": [("do", "Track the course with the most enrolled students")],
+                "outcomes": [("Report", "Most popular course: Programming II (CS102) - Enrolled: 2."), ("No enrolments", "No enrollments found.")],
+            },
+            {
+                "n": 14, "label": "Logout.",
+                "call": "loggedInAdministrator.logout(loggedInAdministrator)",
+                "target": ("administrator", "logout"), "save": None,
+                "summary": "Return to the role prompt.",
+                "steps": [("do", "logout() returns a message, but main() does not print it")],
+                "outcomes": [("Back to", "Enter your role from the current options: (Student/Instructor/Admin) or exit to finish.")],
+            },
+        ],
+    },
+]
