@@ -25,12 +25,12 @@ All user types extend this class and implement their own role‑specific logic.
 
 The `User` class defines the following fields:
 
-- `name`  
-- `ID`  
-- `password`  
-- `email`  
-- `phoneNumber`  
-- `role`  
+- `name`
+- `ID`
+- `password`
+- `email`
+- `phoneNumber`
+- `role`
 - `address`
 
 These fields represent the essential profile information required for authentication, communication, and identification within the system.
@@ -89,9 +89,9 @@ The `User` class defines two abstract methods that all subclasses must implement
 Each subclass implements its own login logic.  
 This allows:
 
-- Students to authenticate from the student list  
-- Instructors to authenticate from the instructor list  
-- Administrators to authenticate from the admin list  
+- Students to authenticate from the student list
+- Instructors to authenticate from the instructor list
+- Administrators to authenticate from the admin list
 
 The method returns the authenticated user or `null` if authentication fails.
 

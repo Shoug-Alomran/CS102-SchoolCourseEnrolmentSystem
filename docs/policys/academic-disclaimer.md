@@ -1,6 +1,6 @@
 # :scroll: Academic Disclaimer
 
-*Last updated: 2026*
+_Last updated: 2026_
 
 ---
 
@@ -47,20 +47,18 @@ are my own intellectual work unless otherwise stated.
 
 <div class="grid cards" markdown>
 
--   :green_circle: **You May**
+- :green_circle: **You May**
 
-    ---
+  ***
+  - Use materials for personal study
+  - Reference concepts with proper attribution
 
-    - Use materials for personal study
-    - Reference concepts with proper attribution
+- :red_circle: **You May Not**
 
--   :red_circle: **You May Not**
-
-    ---
-
-    - Reproduce content commercially
-    - Redistribute materials without appropriate credit
-    - Present the work as official institutional documentation
+  ***
+  - Reproduce content commercially
+  - Redistribute materials without appropriate credit
+  - Present the work as official institutional documentation
 
 </div>
 

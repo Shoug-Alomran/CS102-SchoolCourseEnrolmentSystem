@@ -46,17 +46,17 @@ This method summarizes enrollment across all courses.
 
 It displays:
 
-- Total number of enrolled students across the entire system  
-- Whether any courses are currently open  
-- A simple distribution of enrollment per course  
+- Total number of enrolled students across the entire system
+- Whether any courses are currently open
+- A simple distribution of enrollment per course
 
 Workflow:
 
-1. Iterate through all courses  
-2. Count the number of enrolled students in each  
-3. Add to a running total  
-4. Check whether any course has `OPEN` status  
-5. Print the results  
+1. Iterate through all courses
+2. Count the number of enrolled students in each
+3. Add to a running total
+4. Check whether any course has `OPEN` status
+5. Print the results
 
 This provides administrators with a quick overview of system activity.
 
@@ -70,12 +70,12 @@ This method identifies the most popular course based on enrollment count.
 
 Workflow:
 
-1. Iterate through all courses  
-2. Track the course with the highest number of enrolled students  
+1. Iterate through all courses
+2. Track the course with the highest number of enrolled students
 3. Print:
-   - Course name  
-   - Course code  
-   - Number of enrolled students  
+   - Course name
+   - Course code
+   - Number of enrolled students
 
 If no students are enrolled in any course, the system prints a message indicating that no popularity ranking can be generated.
 
@@ -87,10 +87,10 @@ This report helps administrators understand which courses attract the most stude
 
 The reporting features rely on:
 
-- `listOfCourses` from `dataManager`  
-- `enrolledStudents` list inside each `Course` object  
-- Enrollment status (`OPEN` or `CLOSED`)  
-- Assessment data (for grade‑related reporting, if needed)  
+- `listOfCourses` from `dataManager`
+- `enrolledStudents` list inside each `Course` object
+- Enrollment status (`OPEN` or `CLOSED`)
+- Assessment data (for grade‑related reporting, if needed)
 
 These data structures ensure that reports are always based on the most current system state.
 
@@ -100,10 +100,10 @@ These data structures ensure that reports are always based on the most current s
 
 The reporting system is intentionally simple:
 
-- No graphical charts  
-- No external file export  
-- No historical tracking  
-- No multi‑semester comparison  
+- No graphical charts
+- No external file export
+- No historical tracking
+- No multi‑semester comparison
 
 It is designed for console‑based academic simulations rather than full institutional analytics.
 

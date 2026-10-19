@@ -28,9 +28,9 @@ It summarizes the major components, their responsibilities, and how they interac
 
 The system is organized into four main layers:
 
-1. **Core Entity Classes**  
-2. **Utility Classes**  
-3. **Data Management**  
+1. **Core Entity Classes**
+2. **Utility Classes**
+3. **Data Management**
 4. **Main Application Flow**
 
 Each layer contributes to a modular, maintainable, and object‑oriented design.
@@ -47,23 +47,23 @@ Defines shared attributes and behaviors for all user types.
 
 Common fields include:
 
-- name  
-- ID  
-- password  
-- email  
-- phoneNumber  
-- role  
-- address  
+- name
+- ID
+- password
+- email
+- phoneNumber
+- role
+- address
 
 Subclasses:
 
-- Student  
-- Instructor  
-- Administrator  
+- Student
+- Instructor
+- Administrator
 
 Abstract methods:
 
-- `login()`  
+- `login()`
 - `logout()`
 
 ---
@@ -74,11 +74,11 @@ Represents a student in the system.
 
 Responsibilities:
 
-- Enroll in courses  
-- Drop courses  
-- View grades  
-- Track credit limits  
-- Update personal information  
+- Enroll in courses
+- Drop courses
+- View grades
+- Track credit limits
+- Update personal information
 
 ---
 
@@ -88,10 +88,10 @@ Represents an instructor in the system.
 
 Responsibilities:
 
-- View enrolled students  
-- Grade assessments  
-- Update course information  
-- Update personal profile  
+- View enrolled students
+- Grade assessments
+- Update course information
+- Update personal profile
 
 ---
 
@@ -101,11 +101,11 @@ Represents a system administrator.
 
 Responsibilities:
 
-- Add, remove, and update students and instructors  
-- Add and manage courses  
-- Assign instructors to courses  
-- Close courses  
-- View system statistics  
+- Add, remove, and update students and instructors
+- Add and manage courses
+- Assign instructors to courses
+- Close courses
+- View system statistics
 
 ---
 
@@ -115,16 +115,16 @@ Represents a university course.
 
 Key attributes:
 
-- courseName  
-- courseCode  
-- schedule  
-- description  
-- creditHours  
-- capacity  
-- enrollmentStatus  
-- instructor  
-- enrolledStudents  
-- assessments  
+- courseName
+- courseCode
+- schedule
+- description
+- creditHours
+- capacity
+- enrollmentStatus
+- instructor
+- enrolledStudents
+- assessments
 
 Includes validation logic and helper methods such as `isFull()`.
 
@@ -136,11 +136,11 @@ Represents a single evaluation event (quiz, midterm, final, project).
 
 Attributes:
 
-- studentId  
-- courseCode  
-- examType  
-- score  
-- assessmentName  
+- studentId
+- courseCode
+- examType
+- score
+- assessmentName
 
 Supports grade assignment, grade viewing, and average calculation.
 
@@ -154,15 +154,15 @@ Provides reusable logic used across the entire system.
 
 Includes:
 
-- Input validation  
-- Safe integer input  
-- Login workflows  
-- Role selection  
-- Profile updating  
-- Course enrollment and dropping  
-- Instructor and admin operations  
-- Statistics and reporting  
-- Menu display functions  
+- Input validation
+- Safe integer input
+- Login workflows
+- Role selection
+- Profile updating
+- Course enrollment and dropping
+- Instructor and admin operations
+- Statistics and reporting
+- Menu display functions
 
 This class centralizes repeated logic and improves maintainability.
 
@@ -177,16 +177,16 @@ Handles all file‑based persistence for the system.
 Responsibilities:
 
 - Load and save data for:
-  - Students  
-  - Instructors  
-  - Administrators  
-  - Courses  
-  - Assessments  
+  - Students
+  - Instructors
+  - Administrators
+  - Courses
+  - Assessments
 
-- CRUD operations for all entities  
-- Assigning instructors to courses  
-- Enrolling and dropping students  
-- Generating reports and statistics  
+- CRUD operations for all entities
+- Assigning instructors to courses
+- Enrolling and dropping students
+- Generating reports and statistics
 
 This class ensures that all system data persists across program sessions.
 
@@ -200,15 +200,15 @@ The entry point of the application.
 
 Responsibilities:
 
-- Initialize the data manager  
-- Load all saved data  
-- Create a default administrator  
-- Provide the main role selection loop  
+- Initialize the data manager
+- Load all saved data
+- Create a default administrator
+- Provide the main role selection loop
 - Direct users to:
-  - Student workflow  
-  - Instructor workflow  
-  - Administrator workflow  
-- Save all data before exiting  
+  - Student workflow
+  - Instructor workflow
+  - Administrator workflow
+- Save all data before exiting
 
 This class coordinates the entire system and manages user interaction.
 
@@ -218,9 +218,9 @@ This class coordinates the entire system and manages user interaction.
 
 The project is structured to separate concerns clearly:
 
-- **Entity classes** model the system’s data  
-- **Helpers** provide reusable logic  
-- **dataManager** handles persistence  
-- **The main class** manages application flow  
+- **Entity classes** model the system’s data
+- **Helpers** provide reusable logic
+- **dataManager** handles persistence
+- **The main class** manages application flow
 
 This modular design supports readability, maintainability, and scalability.

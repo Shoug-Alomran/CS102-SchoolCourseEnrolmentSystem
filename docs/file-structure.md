@@ -9,12 +9,12 @@ This structure ensures maintainability, readability, and ease of navigation for 
 
 The project is divided into the following major components:
 
-- **Core entity classes**  
-- **Workflow logic**  
-- **Utility and helper classes**  
-- **Data persistence layer**  
-- **Main application entry point**  
-- **Text‑based storage files**  
+- **Core entity classes**
+- **Workflow logic**
+- **Utility and helper classes**
+- **Data persistence layer**
+- **Main application entry point**
+- **Text‑based storage files**
 
 Each component plays a specific role in the system’s architecture.
 
@@ -26,44 +26,46 @@ A typical layout for the project is as follows:
 
 SchoolCourseEnrolmentSystem/
 ├── src/
-│   ├── User.java
-│   ├── Student.java
-│   ├── Instructor.java
-│   ├── Administrator.java
-│   ├── Course.java
-│   ├── Assessment.java
-│   ├── Helpers.java
-│   ├── DataManager.java
-│   └── SchoolCourseEnrolmentSystem.java    ← Main entry point
+│ ├── User.java
+│ ├── Student.java
+│ ├── Instructor.java
+│ ├── Administrator.java
+│ ├── Course.java
+│ ├── Assessment.java
+│ ├── Helpers.java
+│ ├── DataManager.java
+│ └── SchoolCourseEnrolmentSystem.java ← Main entry point
 ├── data/
-│   ├── students.txt
-│   ├── instructors.txt
-│   ├── administrators.txt
-│   ├── courses.txt
-│   └── assessments.txt
+│ ├── students.txt
+│ ├── instructors.txt
+│ ├── administrators.txt
+│ ├── courses.txt
+│ └── assessments.txt
 └── docs/
-    ├── index.md
-    ├── structure.md
-    ├── file-structure.md
-    ├── data-files.md
-    ├── helpers.md
-    ├── data-manager.md
-    ├── main.md
-    ├── student.md
-    ├── instructor.md
-    ├── administrator.md
-    ├── course.md
-    ├── assessment.md
-    ├── student-workflow.md
-    ├── instructor-workflow.md
-    ├── admin-workflow.md
-    ├── exit-exception.md
-    ├── code-main.md
-    ├── code-helpers.md
-    ├── code-data-manager.md
-    ├── reports-and-statistics.md
-    └── CS102 PROJECT REPORT.pdf
-
+├── index.md
+├── structure.md
+├── file-structure.md
+├── data-files.md
+├── helpers.md
+├── data-manager.md
+├── main.md
+├── student.md
+├── instructor.md
+├── administrator.md
+├── course.md
+├── assessment.md
+├── student-workflow.md
+├── instructor-workflow.md
+├── admin-workflow.md
+├── exit-exception.md
+├── code-main.md
+├── code-helpers.md
+├── code-data-manager.md
+├── code-per-class.md
+├── source-code/            # full Java source, one page per class
+├── reports-and-statistics.md
+├── project-report.md
+└── cs102-school-course-enrolment-system-project-report.pdf
 
 ---
 
@@ -92,11 +94,11 @@ Contains all persistent storage files used by `DataManager`.
 
 Files include:
 
-- `students.txt`  
-- `instructors.txt`  
-- `administrators.txt`  
-- `courses.txt`  
-- `assessments.txt`  
+- `students.txt`
+- `instructors.txt`
+- `administrators.txt`
+- `courses.txt`
+- `assessments.txt`
 
 Each file stores serialized objects, one per line, using a delimiter‑based format.
 
@@ -108,12 +110,12 @@ Contains all Markdown files used to generate the project documentation website.
 
 Includes:
 
-- Project overview pages  
-- Class documentation  
-- Workflow descriptions  
-- Code reference pages  
-- Reports and statistics  
-- PDF project report  
+- Project overview pages
+- Class documentation
+- Workflow descriptions
+- Code reference pages
+- Reports and statistics
+- PDF project report
 
 This folder powers the MkDocs site hosted on GitHub Pages.
 
@@ -123,10 +125,10 @@ This folder powers the MkDocs site hosted on GitHub Pages.
 
 This file organization supports:
 
-- **Separation of concerns**  
-- **Easy navigation for developers and graders**  
-- **Clear mapping between code, data, and documentation**  
-- **Scalability** as the system grows  
+- **Separation of concerns**
+- **Easy navigation for developers and graders**
+- **Clear mapping between code, data, and documentation**
+- **Scalability** as the system grows
 
 Each folder has a single, well‑defined responsibility, making the project easier to understand and maintain.
 
@@ -136,8 +138,8 @@ Each folder has a single, well‑defined responsibility, making the project easi
 
 The project’s file structure is intentionally simple and modular:
 
-- `src/` contains all Java logic  
-- `data/` stores persistent text files  
-- `docs/` powers the documentation site  
+- `src/` contains all Java logic
+- `data/` stores persistent text files
+- `docs/` powers the documentation site
 
 This structure ensures clarity, maintainability, and professional organization throughout the system.

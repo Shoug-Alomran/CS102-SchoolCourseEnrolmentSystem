@@ -11,10 +11,10 @@ These menus are defined and printed through the `Helpers` class.
 
 The menu system is designed to:
 
-- Provide a clear, structured navigation flow  
-- Prevent users from accessing actions outside their role  
-- Ensure consistency across all workflows  
-- Simplify user interaction in a console‑based environment  
+- Provide a clear, structured navigation flow
+- Prevent users from accessing actions outside their role
+- Ensure consistency across all workflows
+- Simplify user interaction in a console‑based environment
 
 Each menu option corresponds to a specific workflow or helper method.
 
@@ -26,14 +26,14 @@ Displayed after a student logs in.
 
 Options include:
 
-1. View available courses  
-2. Enroll in a course  
-3. View enrolled courses  
-4. View credit limit  
-5. Drop a course  
-6. View grades  
-7. Update personal information  
-8. Logout  
+1. View available courses
+2. Enroll in a course
+3. View enrolled courses
+4. View credit limit
+5. Drop a course
+6. View grades
+7. Update personal information
+8. Logout
 
 This menu provides all academic and profile‑related actions available to students.
 
@@ -45,11 +45,11 @@ Displayed after an instructor logs in.
 
 Options include:
 
-1. View enrolled students  
-2. Grade students  
-3. Update course information  
-4. Update personal information  
-5. Logout  
+1. View enrolled students
+2. Grade students
+3. Update course information
+4. Update personal information
+5. Logout
 
 This menu focuses on teaching responsibilities and profile management.
 
@@ -61,20 +61,20 @@ Displayed after an administrator logs in.
 
 Options include:
 
-1. Add student  
-2. Remove student  
-3. View student list  
-4. Add instructor  
-5. Remove instructor  
-6. View instructor list  
-7. Add course  
-8. Close course  
-9. Update student information  
-10. Update instructor information  
-11. Assign instructor to course  
-12. View enrollment statistics  
-13. Generate reports  
-14. Logout  
+1. Add student
+2. Remove student
+3. View student list
+4. Add instructor
+5. Remove instructor
+6. View instructor list
+7. Add course
+8. Close course
+9. Update student information
+10. Update instructor information
+11. Assign instructor to course
+12. View enrollment statistics
+13. Generate reports
+14. Logout
 
 This menu provides full system control and management capabilities.
 
@@ -84,9 +84,9 @@ This menu provides full system control and management capabilities.
 
 All menus rely on:
 
-- `Helpers.getSafeIntInput()` for safe numeric input  
-- Validation loops to prevent invalid selections  
-- Clear error messages for out‑of‑range choices  
+- `Helpers.getSafeIntInput()` for safe numeric input
+- Validation loops to prevent invalid selections
+- Clear error messages for out‑of‑range choices
 
 This ensures the system never crashes due to invalid menu input.
 

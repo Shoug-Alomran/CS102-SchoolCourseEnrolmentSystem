@@ -1,6 +1,9 @@
 site_name: School Course Enrolment System Docs
-site_url: https://school-course-enrolment-system.Shoug-Tech.com
-site_description: School Course Enrolment System technical documentation
+site_url: https://school-course-enrolment-system.shoug-tech.com/
+site_description: Documentation for the CS102 School Course Enrolment System, a Java console app for course enrollment with student, instructor and administrator roles, OOP class design, and full source code.
+site_author: Shoug Alomran
+repo_url: https://github.com/Shoug-Alomran/CS102-SchoolCourseEnrolmentSystem
+repo_name: CS102-SchoolCourseEnrolmentSystem
 
 theme:
   name: material
@@ -14,14 +17,29 @@ theme:
     - search.suggest
     - search.highlight
     - content.code.copy
+    - content.code.annotate
+    - navigation.top
   palette:
-    - scheme: default
-      primary: blue
-      accent: teal
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
   icon:
-    logo: material/school
+    logo: material/language-java
+    repo: fontawesome/brands/github
+  favicon: assets/favicon.svg
   font:
-    text: Space Grotesk
+    text: Inter
     code: JetBrains Mono
 
 extra:
@@ -62,19 +80,34 @@ nav:
       - Main Class: code-main.md
       - Helpers: code-helpers.md
       - Data Manager: code-data-manager.md
-      - Per-Class Code Summary: code-per-class.md
+      - Full Source Code:
+          - Overview: code-per-class.md
+          - Main Class: source-code/main.md
+          - User: source-code/user.md
+          - Student: source-code/student.md
+          - Instructor: source-code/instructor.md
+          - Administrator: source-code/administrator.md
+          - Assessment: source-code/assessment.md
+          - Course: source-code/course.md
+          - Helpers: source-code/helpers.md
+          - Data Manager: source-code/data-manager.md
 
   - Reports & Statistics: reports-and-statistics.md
 
-  - PDF Documentation: CS102 PROJECT REPORT.pdf
+  - Project Report (PDF): project-report.md
 
 markdown_extensions:
   - admonition
+  - attr_list
+  - md_in_html
+  - tables
   - toc:
       permalink: true
   - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.highlight:
+      anchor_linenums: true
   - pymdownx.superfences
   - pymdownx.inlinehilite
 

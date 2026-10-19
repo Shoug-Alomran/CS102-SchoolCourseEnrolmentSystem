@@ -1,0 +1,60 @@
+{% extends "main.html" %}
+
+{% block tabs %}
+{{ super() }}
+<section class="ce-hero" aria-labelledby="ce-hero-title">
+  <div class="md-grid ce-hero__grid">
+    <div class="ce-hero__copy">
+      <p class="ce-eyebrow">
+        <span class="ce-eyebrow__dot" aria-hidden="true"></span>
+        CS102 · Programming II · Prince Sultan University
+      </p>
+      <h1 id="ce-hero-title" class="ce-hero__title">
+        The registrar's office,<br />
+        <span>written in Java.</span>
+      </h1>
+      <p class="ce-hero__lede">
+        A console application for a simplified university. Students enrol in
+        and drop courses, instructors grade assessments, and administrators
+        run the course catalogue, and every record is saved to plain text
+        files between sessions.
+      </p>
+      <div class="ce-hero__actions">
+        <a class="ce-btn ce-btn--primary" href="{{ 'structure/' | url }}">
+          Explore the architecture
+          <span aria-hidden="true">→</span>
+        </a>
+        <a class="ce-btn" href="{{ 'code-per-class/' | url }}">
+          <span class="ce-btn__mono">{ }</span> Read the source
+        </a>
+        <a class="ce-btn" href="{{ 'project-report/' | url }}">Project report</a>
+      </div>
+      <dl class="ce-hero__stats">
+        <div><dt>Roles</dt><dd>3</dd></div>
+        <div><dt>Classes</dt><dd>9</dd></div>
+        <div><dt>Data files</dt><dd>5</dd></div>
+        <div><dt>Runtime</dt><dd>JVM</dd></div>
+      </dl>
+    </div>
+
+    <figure class="ce-term" aria-label="Example console session of the enrolment system">
+      <div class="ce-term__bar">
+        <span class="ce-term__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span class="ce-term__title">SchoolCourseEnrolmentSystem.main()</span>
+        <span class="ce-term__tag">java 8</span>
+      </div>
+      <pre class="ce-term__body"><code><span class="ce-l"><span class="ce-p">$</span> java schoolcourseenrolmentsystem.SchoolCourseEnrolmentSystem</span><span class="ce-l ce-h">Welcome to School Course Enrolment System!</span><span class="ce-l ce-o">Enter your role from the current options: (Student/Instructor/Admin)</span><span class="ce-l"><span class="ce-p">&gt;</span> <span class="ce-in">Student</span></span><span class="ce-l ce-o">Please enter your ID and Password</span><span class="ce-l"><span class="ce-p">&gt;</span> <span class="ce-in">S-1042 ••••••••</span></span><span class="ce-l"> </span><span class="ce-l ce-o">Enter the number for the choice you want.</span><span class="ce-l ce-m"><b>1.</b> View available courses.</span><span class="ce-l ce-m ce-sel"><b>2.</b> Enroll in course.</span><span class="ce-l ce-m"><b>3.</b> View enrolled courses.</span><span class="ce-l ce-m"><b>4.</b> Drop course.</span><span class="ce-l ce-m"><b>5.</b> View grades.</span><span class="ce-l ce-m"><b>6.</b> Update personal information.</span><span class="ce-l ce-m"><b>7.</b> Logout.</span><span class="ce-l"><span class="ce-p">&gt;</span> <span class="ce-in">2</span><span class="ce-caret" aria-hidden="true"></span></span></code></pre>
+      <figcaption class="ce-term__caption">
+        <span>student session</span>
+        <span>menu text from <code>main()</code></span>
+      </figcaption>
+    </figure>
+  </div>
+</section>
+{% endblock %}
+
+{% block content %}
+<div class="ce-home">
+  {{ page.content }}
+</div>
+{% endblock %}

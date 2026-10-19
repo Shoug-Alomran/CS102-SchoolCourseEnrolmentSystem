@@ -38,10 +38,10 @@ Using an enum ensures that only valid assessment types can be assigned.
 
 The `Assessment` class includes the following fields:
 
-- `studentId`  
-- `courseCode`  
-- `examType`  
-- `score`  
+- `studentId`
+- `courseCode`
+- `examType`
+- `score`
 - `assessmentName`
 
 These fields uniquely identify the assessment and store the student’s performance.

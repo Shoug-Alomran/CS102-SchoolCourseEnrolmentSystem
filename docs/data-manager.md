@@ -118,37 +118,37 @@ The class provides CRUD operations for all entity types.
 
 ### Students
 
-- Add student  
-- Remove student  
-- Update student  
-- Retrieve student by ID  
+- Add student
+- Remove student
+- Update student
+- Retrieve student by ID
 
 ### Instructors
 
-- Add instructor  
-- Remove instructor  
-- Update instructor  
-- Retrieve instructor by ID  
+- Add instructor
+- Remove instructor
+- Update instructor
+- Retrieve instructor by ID
 
 ### Administrators
 
-- Add administrator  
-- Retrieve administrator by ID  
+- Add administrator
+- Retrieve administrator by ID
 
 ### Courses
 
-- Add course  
-- Remove course  
-- Update course  
-- Assign instructor  
-- Close course  
-- Retrieve course by code  
+- Add course
+- Remove course
+- Update course
+- Assign instructor
+- Close course
+- Retrieve course by code
 
 ### Assessments
 
-- Add assessment  
-- Update assessment  
-- Retrieve assessments for a student and course  
+- Add assessment
+- Update assessment
+- Retrieve assessments for a student and course
 
 These operations are used throughout the system by the `Helpers` class and the main workflows.
 
@@ -158,11 +158,11 @@ These operations are used throughout the system by the `Helpers` class and the m
 
 The class includes additional helper methods such as:
 
-- Checking if a student or instructor exists  
-- Checking if a course exists  
-- Ensuring unique IDs  
-- Ensuring unique course codes  
-- Validating instructor assignments  
+- Checking if a student or instructor exists
+- Checking if a course exists
+- Ensuring unique IDs
+- Ensuring unique course codes
+- Validating instructor assignments
 
 These methods help maintain data integrity.
 

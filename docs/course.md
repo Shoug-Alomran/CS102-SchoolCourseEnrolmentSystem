@@ -39,21 +39,21 @@ The `Course` class includes the following fields:
 
 #### Basic information
 
-- `courseName`  
-- `courseCode`  
-- `schedule`  
+- `courseName`
+- `courseCode`
+- `schedule`
 - `description`
 
 #### Enrollment management
 
-- `enrollmentStatus`  
-- `capacity`  
+- `enrollmentStatus`
+- `capacity`
 - `enrolledStudents` (a list of `Student` objects)
 
 #### Academic details
 
-- `grades` (a list of `Assessment` objects)  
-- `creditHours`  
+- `grades` (a list of `Assessment` objects)
+- `creditHours`
 
 #### Instructor
 
@@ -81,10 +81,10 @@ Each field has corresponding getter and setter methods.
 
 Validation rules include:
 
-- `courseName` and `courseCode` must not be empty  
-- `capacity` must be a positive integer  
-- `creditHours` must be greater than zero  
-- Invalid values trigger error messages and do not update the field  
+- `courseName` and `courseCode` must not be empty
+- `capacity` must be a positive integer
+- `creditHours` must be greater than zero
+- Invalid values trigger error messages and do not update the field
 
 This defensive design prevents invalid course data from entering the system.
 

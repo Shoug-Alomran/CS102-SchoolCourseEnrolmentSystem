@@ -57,11 +57,11 @@ This administrator is added to the system even if data is loaded from files.
 
 The `main` method performs the following steps:
 
-1. Initializes the singleton `dataManager` instance  
-2. Loads all previously saved data using `loadAllData()`  
-3. Adds the default administrator to the system  
-4. Enters the main role selection loop  
-5. Saves all data before exiting  
+1. Initializes the singleton `dataManager` instance
+2. Loads all previously saved data using `loadAllData()`
+3. Adds the default administrator to the system
+4. Enters the main role selection loop
+5. Saves all data before exiting
 
 This ensures that the system state is preserved across sessions.
 
@@ -71,10 +71,10 @@ This ensures that the system state is preserved across sessions.
 
 The program repeatedly prompts the user to select a role:
 
-- Student  
-- Instructor  
-- Administrator  
-- Exit  
+- Student
+- Instructor
+- Administrator
+- Exit
 
 Based on the selected role, the system:
 
@@ -90,14 +90,14 @@ This loop continues until the user chooses to exit.
 
 After successful login, students can:
 
-1. View available courses  
-2. Enroll in a course  
-3. View enrolled courses  
-4. View credit limit  
-5. Drop a course  
-6. View grades  
-7. Update personal profile  
-8. Logout  
+1. View available courses
+2. Enroll in a course
+3. View enrolled courses
+4. View credit limit
+5. Drop a course
+6. View grades
+7. Update personal profile
+8. Logout
 
 Certain actions (such as updating personal information) trigger immediate data saving.
 
@@ -107,11 +107,11 @@ Certain actions (such as updating personal information) trigger immediate data s
 
 After successful login, instructors can:
 
-1. View enrolled students in their assigned courses  
-2. Grade students  
-3. Update course information  
-4. Update personal profile  
-5. Logout  
+1. View enrolled students in their assigned courses
+2. Grade students
+3. Update course information
+4. Update personal profile
+5. Logout
 
 These actions allow instructors to manage academic responsibilities.
 
@@ -121,20 +121,20 @@ These actions allow instructors to manage academic responsibilities.
 
 After successful login, administrators can:
 
-1. Add students  
-2. Remove students  
-3. View student list  
-4. Add instructors  
-5. Remove instructors  
-6. View instructor list  
-7. Add courses  
-8. Close courses  
-9. Update student information  
-10. Update instructor information  
-11. Assign instructors to courses  
-12. View enrollment statistics  
-13. Generate reports  
-14. Logout  
+1. Add students
+2. Remove students
+3. View student list
+4. Add instructors
+5. Remove instructors
+6. View instructor list
+7. Add courses
+8. Close courses
+9. Update student information
+10. Update instructor information
+11. Assign instructors to courses
+12. View enrollment statistics
+13. Generate reports
+14. Logout
 
 Administrators have full control over system data and structure.
 

@@ -107,13 +107,13 @@ Provides a multi‑step process for assigning or updating a student's grade.
 
 Workflow:
 
-1. Instructor selects a course they teach  
-2. Instructor selects a student enrolled in that course  
-3. Instructor selects an assessment type (Quiz, Midterm, Final, etc.)  
-4. Instructor enters a score between 0 and 100  
+1. Instructor selects a course they teach
+2. Instructor selects a student enrolled in that course
+3. Instructor selects an assessment type (Quiz, Midterm, Final, etc.)
+4. Instructor enters a score between 0 and 100
 5. The system:
-   - Updates an existing assessment if it exists  
-   - Creates a new assessment if none exists  
+   - Updates an existing assessment if it exists
+   - Creates a new assessment if none exists
 
 The method includes validation and error handling for invalid inputs.
 
