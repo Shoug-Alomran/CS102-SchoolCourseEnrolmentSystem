@@ -1,0 +1,80 @@
+{#- Custom single-row header: brand, section dropdowns, search, theme, repo, report. -#}
+{% set chevron %}<svg class="ce-nav__chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 10l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>{% endset %}
+<header class="md-header ce-header" data-md-component="header">
+  <nav class="md-header__inner md-grid ce-header__inner" aria-label="{{ lang.t('header') }}">
+    <label class="md-header__button md-icon ce-header__drawer" for="__drawer" aria-label="Open navigation">
+      {% include ".icons/material/menu.svg" %}
+    </label>
+
+    <a href="{{ nav.homepage.url | url }}" class="ce-brand" aria-label="{{ config.site_name }}: home" data-md-component="logo">
+      <span class="ce-brand__mark">{% include ".icons/material/language-java.svg" %}</span>
+      <span class="ce-brand__code">CS102</span>
+      <span class="ce-brand__slash" aria-hidden="true">/</span>
+      <span class="ce-brand__name">enrolment</span>
+    </a>
+
+    <ul class="ce-nav">
+      {% for item in nav %}
+        {% if item.children %}
+          {% set nested = item.children | selectattr("children") | list %}
+          <li class="ce-nav__item{% if item.active %} ce-nav__item--active{% endif %}">
+            <button class="ce-nav__trigger" type="button" aria-haspopup="true">
+              {{ item.title }}{{ chevron }}
+            </button>
+            <div class="ce-menu{% if nested %} ce-menu--wide{% endif %}">
+              {% set ns = namespace(i=0) %}
+              <div class="ce-menu__group">
+                <div class="ce-menu__label">{{ item.title }}</div>
+                {% for child in item.children if not child.children %}
+                  {% set ns.i = ns.i + 1 %}
+                  <a class="ce-menu__link" href="{{ child.url | url }}"{% if child.active %} aria-current="page"{% endif %}>
+                    <span class="ce-menu__index">{{ "%02d" | format(ns.i) }}</span>
+                    <span>{{ child.title }}</span>
+                  </a>
+                {% endfor %}
+              </div>
+              {% for section in nested %}
+                {% set ns.i = 0 %}
+                <div class="ce-menu__group">
+                  <div class="ce-menu__label">{{ section.title }}</div>
+                  {% for leaf in section.children if leaf.url %}
+                    {% set ns.i = ns.i + 1 %}
+                    <a class="ce-menu__link" href="{{ leaf.url | url }}"{% if leaf.active %} aria-current="page"{% endif %}>
+                      <span class="ce-menu__index">{{ "%02d" | format(ns.i) }}</span>
+                      <span>{{ leaf.title }}</span>
+                    </a>
+                  {% endfor %}
+                </div>
+              {% endfor %}
+            </div>
+          </li>
+        {% elif not item.is_homepage and item.url != "project-report/" %}
+          <li class="ce-nav__item{% if item.active %} ce-nav__item--active{% endif %}">
+            <a class="ce-nav__trigger" href="{{ item.url | url }}"{% if item.active %} aria-current="page"{% endif %}>{{ item.title }}</a>
+          </li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+
+    <div class="ce-header__actions">
+      {% if "material/search" in config.plugins %}
+        <label class="md-header__button md-icon ce-header__search" for="__search" aria-label="Search">
+          {% include ".icons/material/magnify.svg" %}
+        </label>
+        {% include "partials/search.html" %}
+      {% endif %}
+      {% if config.theme.palette and not config.theme.palette is mapping %}
+        {% include "partials/palette.html" %}
+      {% endif %}
+      {% if config.repo_url %}
+        <a class="ce-icon-btn" href="{{ config.repo_url }}" target="_blank" rel="noopener" aria-label="Source code on GitHub" title="Source code on GitHub">
+          {% include ".icons/fontawesome/brands/github.svg" %}
+        </a>
+      {% endif %}
+      <a class="ce-report" href="{{ 'project-report/' | url }}">
+        {% include ".icons/material/file-document-outline.svg" %}
+        <span>Report</span>
+      </a>
+    </div>
+  </nav>
+</header>

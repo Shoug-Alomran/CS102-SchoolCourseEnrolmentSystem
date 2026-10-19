@@ -1,0 +1,78 @@
+{#- Page frame: breadcrumb, sibling pages, eyebrow, content and prev/next. -#}
+{% if "material/tags" in config.plugins and tags %}
+  {% include "partials/tags.html" %}
+{% endif %}
+
+{% set crumbs = page.url.strip("/").split("/") if page.url else [] %}
+{% set ancestors = page.ancestors | reverse | list %}
+{% set words = page.content | striptags | wordcount %}
+{% set minutes = ((words / 200) | round(0, "ceil") | int) or 1 %}
+{% set sections = (page.toc.items[0].children | length) if page.toc.items else 0 %}
+
+<header class="ce-page-head">
+  <nav class="ce-crumbs" aria-label="Breadcrumb">
+    <a href="{{ nav.homepage.url | url }}">~</a>
+    {% for crumb in crumbs %}
+      <span class="ce-crumbs__sep" aria-hidden="true">/</span>
+      <span{% if loop.last %} aria-current="page"{% endif %}>{{ crumb }}</span>
+    {% endfor %}
+  </nav>
+
+  {% if page.parent %}
+    {% set siblings = page.parent.children | selectattr("is_page") | list %}
+    {% if siblings | length > 1 %}
+      <nav class="ce-chapters" aria-label="{{ page.parent.title }}">
+        {% for sib in siblings %}
+          <a href="{{ sib.url | url }}"{% if sib.url == page.url %} aria-current="page"{% endif %}>{{ sib.title }}</a>
+        {% endfor %}
+      </nav>
+    {% endif %}
+  {% endif %}
+
+  <div class="ce-page-meta">
+    <p class="ce-page-eyebrow">
+      CS102
+      {% for section in ancestors %}<span aria-hidden="true">·</span> {{ section.title }} {% endfor %}
+      {% if not ancestors %}<span aria-hidden="true">·</span> Programming II{% endif %}
+    </p>
+    <p class="ce-page-stats">
+      {{ minutes }} min read{% if sections %} · {{ sections }} section{% if sections != 1 %}s{% endif %}{% endif %}
+    </p>
+  </div>
+</header>
+
+{% include "partials/actions.html" %}
+
+{% set stepped = 'id="1-' in page.content %}
+<div class="ce-body{% if stepped %} ce-body--stepped{% endif %}">
+  {% if "\x3ch1" not in page.content %}
+    <h1>{{ page.title | d(config.site_name, true) }}</h1>
+  {% endif %}
+  {{ page.content }}
+</div>
+
+{% if page.meta and (page.meta.git_revision_date_localized or page.meta.revision_date) %}
+  {% include "partials/source-file.html" %}
+{% endif %}
+
+{% if page.previous_page or page.next_page %}
+  <nav class="ce-pager" aria-label="Previous and next pages">
+    {% if page.previous_page %}
+      <a class="ce-pager__link ce-pager__link--prev" href="{{ page.previous_page.url | url }}" rel="prev">
+        <span>← Previous</span>
+        <strong>{{ page.previous_page.title }}</strong>
+      </a>
+    {% else %}
+      <span></span>
+    {% endif %}
+    {% if page.next_page %}
+      <a class="ce-pager__link ce-pager__link--next" href="{{ page.next_page.url | url }}" rel="next">
+        <span>Next →</span>
+        <strong>{{ page.next_page.title }}</strong>
+      </a>
+    {% endif %}
+  </nav>
+{% endif %}
+
+{% include "partials/feedback.html" %}
+{% include "partials/comments.html" %}
