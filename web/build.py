@@ -557,7 +557,8 @@ PARSED = {}
 
 def load_java():
     for c in CLASSES:
-        src = (WEB / "java" / c["file"]).read_text(encoding="utf-8").rstrip("\n")
+        # Stored as .java.txt so Java tooling doesn't try to compile the listings.
+        src = (WEB / "java" / (c["file"] + ".txt")).read_text(encoding="utf-8").rstrip("\n")
         header, members = parse_java(src, c["name"])
         PARSED[c["slug"]] = {"src": src, "header": header, "members": members, "lines": src.count("\n") + 1}
 

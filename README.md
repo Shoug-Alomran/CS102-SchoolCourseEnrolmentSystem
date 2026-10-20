@@ -105,7 +105,7 @@ python3 web/build.py          # writes the site to _site/
 python3 web/build.py --serve  # builds, then serves it on http://localhost:8000
 ```
 
-- `web/java/` holds the Java listings from the project report. Class pages, signatures and line numbers are generated from them.
+- `web/java/` holds the Java listings from the project report, saved as `.java.txt` so Java tooling does not try to compile them. Class pages, signatures and line numbers are generated from them.
 - `web/content/` holds the written content: class notes, role sessions, data files, known issues and policies.
 - `web/static/` holds the CSS, JavaScript (including the console simulator) and images.
 

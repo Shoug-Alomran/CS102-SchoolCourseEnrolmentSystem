@@ -3010,3 +3010,10 @@ kbd,
 .console {
   font-variant-ligatures: none;
 }
+
+/* Console parts toggled with the hidden attribute */
+.con-out[hidden],
+.con-in[hidden],
+.con-chips[hidden] {
+  display: none;
+}
